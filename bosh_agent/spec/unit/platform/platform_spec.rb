@@ -16,6 +16,7 @@ describe Bosh::Agent::Platform::Linux do
       pending("Do Not test unknown platform")
     end
 
+    puts "Testing on platform #{Bosh::Agent::Config.platform_name}"
     Bosh::Agent::Config.platform
   end
 
@@ -28,6 +29,7 @@ describe Bosh::Agent::Platform::Linux do
       device_path = "/dev/#{block_device}"
       partition_path = platform.disk.disk_partition(device_path)
 
+      puts "device_path: #{device_path}, partition_path: #{partition_path}"
       File.blockdev?(device_path).should == true
       File.blockdev?(partition_path).should == true
     end
