@@ -105,9 +105,9 @@ module Bosh::Cli::Command
         err("Release file doesn't exist")
       end
 
-      file_type = `file --mime-type -b '#{release_file}'`
+      file_type = `file -b '#{release_file}'`
 
-      if file_type =~ /text\/(plain|yaml)/
+      if file_type =~ /text/
         upload_manifest(release_file, upload_options)
       else
         upload_tarball(release_file, upload_options)
